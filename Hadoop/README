@@ -1,0 +1,21 @@
+NAME: YANG SONG
+DATE: 4/6/2014
+
+4 files contained: WordCount.java MatVecMul.java Jacobi.java and a README
+
+*************************************************************************
+When running WordCount, please indicate the input directory and the output directory; i.e. ~cs458/hadoop-1.2.1/bin/hadoop jar build/Hadoop.jar org.myorg.WordCount  <input> <output>
+When running MatVecMul, please indicate the path of MATRIX and the output directory; i.e ~cs458/hadoop-1.2.1/bin/hadoop jar build/Hadoop.jar org.myorg.MatVecMul  <input> <output>
+When running Jacobi, please indicate the path of input data and the output directory; i.e ~cs458/hadoop-1.2.1/bin/hadoop jar build/Hadoop.jar org.myorg.Jacobi <input> <output>
+
+DESCRIPTION:
+
+WordCount: MAP< Each map gets one line of data and emit word as key, file name as value.
+           Reduce< Create Hashset to avoid duplication and do reducing
+
+MatVecMul: Put the vector as distributed cache
+           MAP< Store the vector from distributed cache to an Arraylist; each map gets one line of data and row index word as key, product as value.
+           Reduce< do reducing
+
+Jacobi   : Put the matrix as distributed cache; mapper in charge of calculation and reducer do nothing
+           Every turn, check if convergence demand is meeting; if not, delete the previous one and rename the current one as "previous"
